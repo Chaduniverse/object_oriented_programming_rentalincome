@@ -18,6 +18,7 @@ class Rental_property_analysis():
 #calculate expenses function
     def calculate_expenses(self):
         print("Lets calculate your total monthly expenses.")
+    
         a = int(input('How much is your monthly mortgage? '))
         b = int(input('Taxes? '))
         c = int(input('Insurance? '))
@@ -27,7 +28,8 @@ class Rental_property_analysis():
         g = int(input('Vacancy? '))
         h = int(input('Repairs? '))
         i = int(input('CapEx? '))
-        j = int(input('Property Management? '))
+        j = int(input('Property Management? ')) 
+        print('Invalid input')
         expenses =  a + b + c + d + e + f + g + h + j 
         self.cashflow['total_expenses'] = expenses
         print("Your total expenses is" + " " + str(expenses) + " " + "usd.") 
@@ -54,18 +56,26 @@ class Rental_property_analysis():
 
     #define runner function
 
+
     def runner(self):
         while True:
-            user_choice = input(
-                "Would you like to analyze a a rental property? Type yes or no to quit. ").lower()
-            if user_choice == 'no':
-                print('Good Bye!')
-                break
-            else:
-                self.calculate_income() 
-                self.calculate_expenses()
-                self.calculate_cashflow()
-                self.cash_on_cash()
+            user_choice = input("Would you like to analyze a rental property? Type yes or no to quit. ").lower()
+            try:
+                if user_choice == 'no':
+                    print('Good Bye!')
+                    break 
+                
+                else:
+                    self.calculate_income() 
+                    self.calculate_expenses()
+                    self.calculate_cashflow()
+                    self.cash_on_cash() 
+                
+            except ValueError: 
+                    print('Invalid input')
+
+
+            
 
 
 
